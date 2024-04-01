@@ -28,3 +28,30 @@
 # Output: 4
 
 # ______________________________________________________________________________________________________________________________________
+
+def searchInsert(nums, target):
+    # Initialize left and right pointers at 0.
+    # Get the length of numbers -1 (right most value)
+    l, r = 0, len(nums) - 1
+
+    # While left corner hasn't crossed right corner
+    while 1 <= r:
+        mid = (1 + r) // 2
+
+        # Check if target is found
+        if target == nums[mid]:
+            return mid
+        
+        # Check if too big
+        if target > nums[mid]:
+            # Shift towards the right for big numbers
+            l = mid + 1
+        
+        # Check if too small
+        else:
+            # Search towards the left for small numbers
+            r = mid - 1
+    # If target is never found return left
+    return l
+
+print(searchInsert([1,3,5,6], 5))
