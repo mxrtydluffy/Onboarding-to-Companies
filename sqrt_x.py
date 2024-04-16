@@ -25,3 +25,27 @@
 # Explanation: The square root of 8 is 2.82842..., and since we round it down to the nearest integer, 2 is returned.
 
 #_______________________________________________________________________________________________________________________
+
+def mySqrt(x):
+    # Initilize l & r
+    l, r = 0, x
+    res = 0
+
+    # Run binary search
+    while l <= r:
+        m = l + ((r - l) // 2)
+        # Run equalities
+        if m**2 > x:
+            r = m - 1
+        # Opposite
+        elif m**2 < x:
+            l = m + 1
+            # mid value could be result
+            res = m
+        # m**2 does not eqal x
+        else:
+            return m
+    return res
+
+print(mySqrt(4))
+print(mySqrt(8))

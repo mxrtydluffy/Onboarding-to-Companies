@@ -42,3 +42,34 @@
 # numbers is sorted in non-decreasing order.
 # -1000 <= target <= 1000
 # The tests are generated such that there is exactly one solution.
+
+def twoSumII(numbers, target):
+    # Assign pointers then get the length of the last index of array
+    left, right = 0, len(numbers) - 1
+
+    # Need a loop to iterate through the array. Here I'm stating
+    # left is greater than right but it doesn't really matter since we're
+    # guaranteed a solution.
+    while left < right:
+
+        # Now we compute the current sum
+        # The sum variable (s) left and right pointer elements
+        s = numbers[left] + numbers[right]
+
+        # if the sum is greater than target
+        if s > target:
+            # Decrease the sum by taking the right pointer and 
+            # shifting it to the left 
+            right -= 1
+        # If current sum is too small, we in increase our
+        # sum by taking the left pointer and shifting it towards the right.
+        elif s < target:
+            left += 1
+        # If answer is found then return the current index
+        # of both left and right.
+        else:
+            return [left + 1, right + 1]
+        
+print(f" Example 1 Solution:", twoSumII([2,7,11,15], 9))
+print(f" Example 2 Solution:", twoSumII([2,3,4], 6))
+print(f" Example 3 Solution:", twoSumII([-1,0], -1))
