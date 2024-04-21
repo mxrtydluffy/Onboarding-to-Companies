@@ -1,3 +1,3 @@
 # Technical Interviews
 
-Easy to intermediate problems
+Leetcode easy to intermediate problems.
