@@ -23,7 +23,30 @@
 # Input: n = 2
 # Output: false
 
-
 # Constraints:
 
 # 1 <= n <= 231 - 1
+
+
+def is_happy(n):
+    # Helper function to calculate the sum of squares of digits
+    def square_sum(num):
+        result = 0
+        while num > 0:
+            digit = num % 10
+            result += digit * digit
+            num //= 10
+        return result
+
+    visited = set()
+
+    while n != 1 and n not in visited:
+        visited.add(n)
+        n = square_sum(n)
+
+    # Return True if the number is 1 (happy number), False if isn't
+    return n == 1
+
+
+print(is_happy(19))
+print(is_happy(2))
