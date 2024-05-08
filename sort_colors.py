@@ -21,3 +21,30 @@
 # n == nums.length
 # 1 <= n <= 300
 # nums[i] is either 0, 1, or 2.
+
+
+def sortColors(nums):
+    # 2 pointers | left in the beginning and
+    l, r = 0, len(nums) - 1
+    # reiterate through entire array until exceed right pointer
+    i = 0
+
+    def swap(i, j):
+        """
+        Moderates nums in placeswap two values for i and j
+        """
+        tmp = nums[i]
+        nums[i] = nums[j]
+        nums[j] = tmp
+
+    while i <= r:
+        if nums[i] == 0:
+            # swap to left corner
+            swap(l, i)
+            # increment left pointer by 1
+            # if i == 2 want to decrement
+        elif nums[i] == 2:
+            swap(i, r)
+            r -= 1
+            i -= 1
+        i += 1

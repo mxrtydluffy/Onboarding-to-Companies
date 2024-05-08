@@ -35,3 +35,34 @@
 # -231 <= val <= 231 - 1
 # Methods pop, top and getMin operations will always be called on non-empty stacks.
 # At most 3 * 104 calls will be made to push, pop, top, and getMin.
+
+
+class MinStack:
+
+    def __init__(self):
+        # define the stacks
+        self.stack = []
+        # empty
+        self.minStack = []
+
+    def push(self, val: int) -> None:
+        # take input value and append it to the first stack
+        self.stack.append(val)
+        # take minimum vaue and append it to the min stack
+        val = min(val, self.minStack[-1] if self.minStack else val)
+        self.minStack.append(val)
+
+    def pop(self) -> None:
+        # pop from both stacks
+        self.stack.pop()
+        self.minStack.pop()
+
+    def top(self) -> int:
+        # take the top (last value) from the first stack
+        # called when stack is non empty
+        return self.stack[-1]
+
+    def getMin(self) -> int:
+        # return from the top (last value) from the min stack
+        # also called when stack is non empty
+        return self.minStack[-1]
